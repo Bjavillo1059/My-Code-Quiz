@@ -1,4 +1,14 @@
-var questions = [
+// Variable declaration for querySelcetors of the html
+var countLeft = 120; // countLeft gives 12 seconds per question
+
+
+
+
+// Variable Declaration
+var score: = 0;
+var questIndex =0;
+
+var questions = [ // Variable with an object and array for questions to JavaScript Quiz
     {   banner: "Arrays in Javascript can be used to store ____.",
         choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
         rightAnswer: "all of the above"
@@ -48,4 +58,22 @@ var questions = [
         choices: ["for", "for/of", "do/while", "while", "all of the above"],
         rightAnswer: "all of the above"
     }
-]
+];
+
+// This event will trigger when the button is clicked
+timer.addEventListener("click", function () {
+    // We are checking zero because its originally set to zero
+    if (holdInterval === 0) {
+        holdInterval = setInterval(function () {
+            secondsLeft--;
+            currentTime.textContent = "Time: " + secondsLeft;
+
+            if (countLeft <= 0) {
+                clearInterval(holdInterval);
+                allDone();
+                currentTime.textContent = "Time's up!";
+            }
+        }, 1000);
+    }
+    render(questionIndex);
+});
