@@ -1,0 +1,130 @@
+:root {
+	--color: bisque;
+	--color-2: rgb(48, 39, 39);
+	--background-color: rgb(209, 178, 143);
+	--background-color-2: rgb(201, 100, 50);
+	--font-family: Arial;
+
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+.wrapper {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+}
+
+header {
+
+  text-align: center;
+  font-size: 20px;
+  padding: 50px;
+  color: var(--background-color-2);
+}
+
+h2 {
+	text-align: center;
+	font-family: var(--font-family);
+	color: var(--color);
+	border-radius: 15px;
+	width: 50%;
+    height: auto;
+	margin: auto;
+    background-color: var(--background-color-2);    
+}
+
+footer {
+    position: fixed;
+    right: 0%;    
+    left: 0%;
+    bottom: 0%; 
+    text-align: center;
+    color: var(--background-color-2);
+    padding: 20px;
+
+}
+
+.wrapper {
+  padding-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+
+.card {
+  background-color: var(--color);
+  border-radius: 50px;
+  border-width: 1px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
+  color: var(--color-2);
+  height: 300px;
+  font-size: 18px;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 30px 40px;
+}
+
+.btn {
+  border: none;
+  background-color: var(--background-color-2);
+  border-radius: 25px;
+  box-shadow: var(--color-2)(0, 0, 0, 0.1) 0px 1px 6px 0px var(--color-2)(0, 0, 0, 0.2) 0px 1px 1px
+    0px;
+  color: var(--color);
+  display: inline-block;
+  font-size: 22px;
+  line-height: 22px;
+  margin-top: 16px;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  margin-left: 225px;
+  padding: 14px 34px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#text {
+    background-color: var(--color-2);
+	color: var(--background-color-2);
+    display: block;
+    width: 50%;
+    height: 115px;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 160px;
+    border: 2px dashed var(--color-2);
+    border-radius: 35px;
+    resize: none;
+}
+
+@media (max-width: 798px) {
+  .btn {
+    font-size: 1rem;
+    margin: 16px 0px 0px 0px;
+    padding: 10px 15px;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .btn {
+    font-size: 0.8rem;
+  }
+}

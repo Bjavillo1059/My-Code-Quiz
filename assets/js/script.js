@@ -1,12 +1,19 @@
 // Variable declaration for querySelcetors of the html
-var countLeft = 120; // countLeft gives 12 seconds per question
+var countDown = 120; // countdown gives 12 seconds per question
+var holdInterval = 0; // hold interval time
+var deduct = 10; // deducts 10 seconds for wrong answer
+var createUl = document.createElement("ul"); // creates a new ul element
 
-
+// Variable declaration to query the DOM
+var timer = document.querySelector(".timer");
+var startTimer = document.querySelector(".start");
+var questions = document.querySelector(".questionList");
+var wrapper = document.querySelector("#wrapper");
 
 
 // Variable Declaration
-var score: = 0;
-var questIndex =0;
+var score = 0;
+var questionIndex =0;
 
 var questions = [ // Variable with an object and array for questions to JavaScript Quiz
     {   banner: "Arrays in Javascript can be used to store ____.",
@@ -45,7 +52,7 @@ var questions = [ // Variable with an object and array for questions to JavaScri
     },
     {
         banner: "What does JavaScript use in programming you want a data type that can only have one of two values?",
-        choices: ["function", "string", "boolean", "number"]
+        choices: ["function", "string", "boolean", "number"],
         rightAnswer: "boolean"
     },
     {
@@ -65,13 +72,13 @@ timer.addEventListener("click", function () {
     // We are checking zero because its originally set to zero
     if (holdInterval === 0) {
         holdInterval = setInterval(function () {
-            secondsLeft--;
-            currentTime.textContent = "Time: " + secondsLeft;
+            countDown--;
+            currentTime.textContent = "Current Time: " + countDown;
 
-            if (countLeft <= 0) {
+            if (countDown <= 0) {
                 clearInterval(holdInterval);
                 allDone();
-                currentTime.textContent = "Time's up!";
+                currentTime.textContent = "You ran out of time!";
             }
         }, 1000);
     }
