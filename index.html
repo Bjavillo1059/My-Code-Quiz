@@ -3,41 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- this makes the document responsive and scales to the items to the screen -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- this is the link to the styles shee within this directory -->
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Code Quiz</title>
 </head>
 <body>
+    <!-- This highscore link will show previous scores from trivia -->
+    <a name = "scores" id = "highscore" href = "./assets/html/highscore.html">View Highscores</a>
+
+    <header>
+        <h1>Code Quiz</h1>
+    </header>
+    
+    <!-- timer created div -->
+    <div class = "timer"></div>
     <!-- this is a wrapper -->
     <section id ="wrapper">
-        <header>
-            <h1>Code Quiz</h1>
-        </header>
-
-        <div class = "timer"></div>
         <div class = "card">
-            <figure class = ".questionList">
+        <!-- figure for questions and answers choices -->
+            <figure class = "questionsList">
                 <h2>JavaScript Trivia</h2>
                 <p id = "text">Answer the following questions to the best of your ability within the given time limit.  If you score a wrong answer you will be deducted 10 seconds off of the running time!
                 </p>
+                <ul id = "questionsUl"></ul>
+                <!-- button created on page -->
                 <button class = "btn" id = "generate">Start-Button</button>
             </figure>
         </div>
-
-        <div class = "card-body">
     </section>
 
 
-    <h2 class = "image"></h2>
-    <h3 class = "image"></h3>
-    <h4 class = "image"></h4>
-    
     <footer>
         <h1>Good Luck and Have Fun</h1>
     </footer>
     <script src="./assets/js/script.js"></script>    
 </body>
 </html>
+
+<!-- add local storage for highscore -->
+<!-- continue to pseudo code -->
 
 
 

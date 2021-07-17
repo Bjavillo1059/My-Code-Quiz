@@ -45,6 +45,15 @@ h2 {
     background-color: var(--background-color-2);    
 }
 
+li {
+  background-color: var(--color-2);
+  margin-top: 10px;
+  padding: 5px 15px;
+  width: 80%;
+  font-size: 18px;
+  color: var(--background-color-2);
+}
+
 footer {
     position: fixed;
     right: 0%;    
@@ -69,7 +78,7 @@ footer {
   border-width: 1px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
   color: var(--color-2);
-  height: 300px;
+  height: 450px;
   font-size: 18px;
   margin: 0 auto;
   max-width: 800px;
@@ -77,37 +86,21 @@ footer {
 }
 
 .btn {
-  border: none;
-  background-color: var(--background-color-2);
-  border-radius: 25px;
-  box-shadow: var(--color-2)(0, 0, 0, 0.1) 0px 1px 6px 0px var(--color-2)(0, 0, 0, 0.2) 0px 1px 1px
-    0px;
+  background-color: var(--background-color-2);  
   color: var(--color);
-  display: inline-block;
   font-size: 22px;
-  line-height: 22px;
-  margin-top: 16px;
-  margin-right: 16px;
-  margin-bottom: 16px;
   margin-left: 225px;
   padding: 14px 34px;
-  text-align: center;
-  cursor: pointer;
 }
 
 #text {
-    background-color: var(--color-2);
-	color: var(--background-color-2);
+	  color: var(--background-color-2);
     display: block;
-    width: 50%;
-    height: 115px;
     font-size: 1.2rem;
     text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
-    margin-left: 160px;
-    border: 2px dashed var(--color-2);
-    border-radius: 35px;
+    margin-left: 10px;
     resize: none;
 }
 
