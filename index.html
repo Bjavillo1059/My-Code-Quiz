@@ -11,7 +11,7 @@
 </head>
 <body>
     <!-- This highscore link will show previous scores from trivia -->
-    <a name = "scores" id = "highscore" href = "./assets/html/highscore.html">View Highscores</a>
+    <a name = "scores" id = "highscore">View Highscores</a>
 
     <header>
         <h1>Code Quiz</h1>
@@ -20,8 +20,8 @@
     <!-- timer created div -->
     <div class = "timer"></div>
     <!-- this is a wrapper -->
-    <section id ="wrapper">
-        <div class = "card">
+    <section class ="wrapper">
+        <div id = "card">
         <!-- figure for questions and answers choices -->
             <figure class = "questionsList">
                 <h2>JavaScript Trivia</h2>
@@ -33,13 +33,20 @@
             </figure>
         </div>
     </section>
+    
+    <!-- jquery link -->
+    <script 
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+  <script src="./assets/js/script.js"></script>    
 
-
-    <footer>
-        <h1>Good Luck and Have Fun</h1>
-    </footer>
-    <script src="./assets/js/script.js"></script>    
 </body>
+
+<footer>
+    <h1>Good Luck and Have Fun</h1>
+</footer>
+
 </html>
 
 <!-- add local storage for highscore -->

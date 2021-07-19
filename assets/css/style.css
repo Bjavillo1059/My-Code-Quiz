@@ -89,7 +89,7 @@ footer {
   background-color: var(--background-color-2);  
   color: var(--color);
   font-size: 22px;
-  margin-left: 225px;
+  margin: auto;
   padding: 14px 34px;
 }
 
