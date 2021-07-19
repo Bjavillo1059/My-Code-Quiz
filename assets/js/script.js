@@ -75,18 +75,15 @@ var questionIndex = [ // Variable with an object and array for questions to Java
 
 
 
-// function renderLastRegistered() 
-   var highScore = localStorage.getItem("scores")
-   // userScoreSpan.innerHTML = score
 
 
 // This event will trigger when the button is clicked
-startTimer.on("click", function (event) {
+startTimer.addEventListener("click", function (event) {
     if (holdInterval === 0) { //set to zero so check for zero
         holdInterval = setInterval(function () {
             countDown--;
             timer.innerHTML = "Current Time: " + countDown;
-        
+            
             if (countDown <= 0) {
                 clearInterval(holdInterval);
                 allCompleted ();    
@@ -110,24 +107,23 @@ function render(questionListing) {
     // renders a new question for each set of question choices
     userChoice.forEach(function (userSelect) {
         var listItem = document.createElement("li");
-        listItem.innerHTML = userSelect;
+        listItem.textContent = userSelect;
         questionsList.appendChild(createUl);
         createUl.appendChild(listItem);
         listItem.addEventListener("click", (compare));
     })
-// localStorage.setItem("highscore", scores)
 }
 
 // comparing user choices to answers selected
 function compare(compareEl) {
     var compareEl = compareEl.target;
-
+    
     if (compareEl.matches("li")) {
-
+        
         var createDiv = document.createElement("div");
         createDiv.setAttribute("id", "userAnswer");
         
-            // compares the users answer to the correct one and will wither add a point or deduct time
+        // compares the users answer to the correct one and will wither add a point or deduct time
         if (compareEl.textContent == questionIndex[questionListing].rightAnswer) {
             score++;
             console.log(score)
@@ -145,7 +141,7 @@ function compare(compareEl) {
     }
     // determines which number question the user is on
     questionListing++;
-
+    
     // when running out of time create a closing text with score and answer list
     if (questionListing >= questionIndex.length) {
         allCompleted();
@@ -161,49 +157,60 @@ function compare(compareEl) {
 function allCompleted() {
     questionListing.innerHTML = "";
     timer.innerHTML = "";
-
+    
     var divCard = $('#card')
-
+    
     // create element variables
     var createH1 = $('<h1>');
     var paraCreate = $('<p>');
-
+    
     createHead.attr('id', 'createH1');
     paraCreate.attr('id', 'paraCreate');
-
+    
     createHead.text('You have completed this quiz! ');
     
     divCard.append(createH1);
     divCard.append(paraCreate);
-
+    
     if (countDown >= 0) {
         var para2Create = $('<p>');
         clearInterval(holdInterval);
         paraCreate.innerHTML = "Your score is: " + countDown;
-
+        
         divCard.append(para2Create);
     }
-
+    
     // create element variables
     var createLa = $('<label>')
     var createIn = $('<input>');
     var createBtn = $('<button>');
-
+    
     // create id attributes
     createLa.attr('id', 'label');
     createIn.attr('id', 'input');
     createBtn.attr('id', 'click');
-
+    
     
     createIn.text('enter initials here');
     createLa.text ('Enter your initals to save your score: ');
     createBtn.text('Click');    
     
     createIn.textContent = '';
-
+    
     divCard.append(createLa)
     divCard.append(createIn);
     divCard.append(createBtn)
+    
+    
+    createBtn.on('click', function() {
+        var endScore = createIn.value;
 
 
+        
+        // function renderLastRegistered() 
+           var highScore = localStorage.getItem("scores")
+           
+
+        localStorage.setItem("highscore", scores)
+    })
 }
