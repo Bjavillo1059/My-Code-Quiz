@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- this makes the document responsive and scales to the items to the screen -->
+    <!-- this makes the document responsive and scales to the items on the screen -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- this is the link to the styles shee within this directory -->
     <link rel="stylesheet" href="./assets/css/style.css" />
@@ -11,16 +11,26 @@
 </head>
 <body>
     <!-- This highscore link will show previous scores from trivia -->
-    <a name = "scores" id = "highscore">View Highscores</a>
+    <div id = "scoreDiv">
+        <h4>View Highscores</h4>
+        <div class = "user-inpu hidden" name = "scores" id = "inputHigh">
+            <label for = "initials">initials</label>
+            <input type = "text" name = "initials" id = "initials" placeholder = "---"></input>
+        </div>
+        <div class = "user-input hidden" name = "scores" id = "inputScore">
+            <label for = "score">player-score</label>
+            <input type = "text" name = "userScore" id = "userScore" placeholder = "---"></input>
+        </div>
+    </div>
 
     <header>
         <h1>Code Quiz</h1>
     </header>
     
     <!-- timer created div -->
-    <div class = "timer"></div>
+    <div class = "time hidden" id = "timer"></div>
     <!-- this is a wrapper -->
-    <section class ="wrapper">
+    <section id ="wrapper">
         <div id = "card">
         <!-- figure for questions and answers choices -->
             <figure class = "questionsList">

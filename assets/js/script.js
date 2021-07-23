@@ -1,13 +1,28 @@
+
+// needs to have a start button - complete
+// when the start button is clicked a timer starts and questions appear with multiple choice - complete
+// when a question is answered another question is presented
+// if a question is answered correctly a point is awarded - ?points are awarded, but is not saving to local storage?
+// if a question is answered incorrectly 10 seconds is deducted from the running time - complete
+// when the timer reaches 0 the game is over
+// at the end of the game you can enter your initials and save your score
+
+
+
+// src of base code // Jamierachael(19July2021)Code Quiz(javascript)[structure/compare function] //
+// src of base code // mmei/Mengmei Tu(19July2021)Code Quiz(javascript)[structure/questions]
+
 // Variable declaration to query the DOM
-var timer = document.querySelector(".timer"); // div timer 
+var timer = document.querySelector("#timer"); // div timer 
+var timeEl = document.querySelector(".time")
 var questionsList = document.querySelector(".questionsList"); // figure class of questiosList
-var wrapper = document.querySelector(".wrapper"); // section id
+var wrapper = document.querySelector("#wrapper"); // section id
 var startTimer = document.querySelector("#generate") // start buttom query
 
 // Variable declaration for global settings of the html
-var countDown = 120; // countdown gives 12 seconds per question
+var countDown = 50; // countdown gives 10 seconds per question
 var holdInterval = 0; // hold interval time
-var deductTime = 10; // deducts 10 seconds for wrong answer
+var deductTime = 7; // deducts 10 seconds for wrong answer
 var createUl = document.createElement("ul"); // creates a new ul element
 
 
@@ -20,61 +35,54 @@ var correctAnswers = ["Awesome, that is correct.  The answer is: ", "Excellent! 
 var wrongAnswers = [ "Ding ding ding, wrong!  The answer is: ", "Try again! the correct answer is: ", "Error, you selcted wrong.  The answer is: "];
 
 
-var questionIndex = [ // Variable with an object and array for questions to JavaScript Quiz
+// Variable with an object and array for questions to JavaScript Quiz
+var questionIndex = [ 
 {
     question: "Arrays in Javascript can be used to store ____.",
-    choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
-    rightAnswer: "all of the above"
+    answers: ["a. numbers and strings", "b. other arrays", "c. booleans", "d. all of the above"],
+    rightAnswer: "d. all of the above"
 },        
 {
     question: "When writing an array, what do you enclose the array with?",
-    choices: ["curly brackets", "parentheses", "quotes", "square brackets"],
-    rightAnswer: "square brackets"
+    answers: ["a. curly brackets", "b. parentheses", "c. quotes", "d. square brackets"],
+    rightAnswer: "d. square brackets"
 },        
 {   
     question: "What symbol is used to make a comment on JavaScript?",
-    choices: ["forward slashes", "back slashes", "semi-colons", "asteriks"],
+    answers: ["a. forward slashes", "b. back slashes", "c. semi-colons", "d. asteriks"],
     rightAnswer: "forward slashes"
 },        
 {
     question: "When setting variables, which would you use for the right syntax?",
-    choices: ["variables", "store", "var", "function"],
-    rightAnswer: "var"
-},        
-{
-    question: "Fixed values are called what?",
-    chocies: ["Variables", "String", "Function", "Literals"],
-    rightAnswer: "Literals"
-},        
-{
-    question: "There are three languages that a developer must learn HTML, CSS, and JavaScript, what is JavaScript used for?",
-    choices: ["to define content of a webpage", "to specify the layout of a webpage", "to program the behavior of a webpage", "to have a menu always display on the left"],
-    rightAnswer: "to program the behavior of a webpage"
-},        
-{
-    question: "What two keywords provide Block Scope in JavaScript?",
-    choices: ["var, function", "let, const", "class, id", "const, else"],
-    rightAnswer: "let, const"
-},        
-{
-    question: "What does JavaScript use in programming you want a data type that can only have one of two values?",
-    choices: ["function", "string", "boolean", "number"],
-    rightAnswer: "boolean"
-},        
-{
-    question: "What does the operator !== mean?",
-    choices: ["not equal", "not equal value or not equal type", "greater than", "equal type and equal value"],
-    rightAnswer: "not equal value or not equal type"
-},        
+    answers: ["a. variables", "b. store", "c. var", "d. function"],
+    rightAnswer: "c. var"
+},
 {
     question: "Select the different kinds of for loops:",
-    choices: ["for", "for/of", "do/while", "while", "all of the above"],
-    rightAnswer: "all of the above"
+    answers: ["a. while", "b. for/of", "c. do/while", "d. all of the above"],
+    rightAnswer: "d. all of the above"
+}, 
+{
+    question: "What does the method JSON.stringify do?",
+    answers: ["a. converts a js object into a JSON string", "b. parses a JSON string and returns it to a js object", "c. converts js into an array", "d. returns a js string into an object"],
+    rightAnswer: "a. converts a js object into a JSON string"
+},
+{
+    question: "When you use an array property prototype, what does it do?",
+    answers: ["a. returns the function that created the Array object's prototype", "b. allows you to add properties and methods to an Array object", "c. sets or returns the number of elements in an array", "joins two or more arrays, and returns a copy of the joined arrays"],
+    rightAnswer: "b. allows you to add properties and methods to an Array object"
 }        
 ];
 
+renderLastRegistered();
 
+function renderLastRegistered() {
+    var user = localStorage.getItem('initials')
+    var userScore = localStorage.getItem('userScore')
+}
 
+var userInitials = document.querySelector("#initials").value;
+var userFinal = document.querySelector("#userScore").value;
 
 
 // This event will trigger when the button is clicked
@@ -86,131 +94,98 @@ startTimer.addEventListener("click", function (event) {
             
             if (countDown <= 0) {
                 clearInterval(holdInterval);
-                allCompleted ();    
+                quizCompleted();  
                 timer.innerHTML = "You ran out of time!";
+
             }
         }, 1000);
     }
     render(questionListing);
+    console.log();
 });
 
-// renders the questions and choices to the page
+// make a function to stop timer at the end of the last question
+
+
+// renders the questions and answers to the page
 function render(questionListing) {  
     questionsList.innerHTML = "";  // clears data existing previously
     createUl.innerHTML = "";  // creates an unorderlist
     // for loop that cycles through the array of questions
     for (let i = 0; i < questionIndex.length; i++) {
         var userQuestion = questionIndex[questionListing].question;
-        var userChoice = questionIndex[questionListing].choices;
-        questionsList.textContent = userQuestion;
+        var userChoice = questionIndex[questionListing].answers;
+        questionsList.innerHTML = userQuestion;
     }
-    // renders a new question for each set of question choices
+    // renders a new question for each set of question answers
     userChoice.forEach(function (userSelect) {
         var listItem = document.createElement("li");
-        listItem.textContent = userSelect;
+        listItem.innerHTML = userSelect;
         questionsList.appendChild(createUl);
         createUl.appendChild(listItem);
         listItem.addEventListener("click", (compare));
     })
-}
+};
 
-// comparing user choices to answers selected
-function compare(compareEl) {
-    var compareEl = compareEl.target;
+
+// comparing user answers to rightAnswer selected
+function compare(event) {
+    var compareEl = event.target;
     
     if (compareEl.matches("li")) {
         
-        var createDiv = document.createElement("div");
-        createDiv.setAttribute("id", "userAnswer");
+        var createDiv = $("<div>");
+        createDiv.attr("id", "userAnswer");
+        console.log();
         
-        // compares the users answer to the correct one and will wither add a point or deduct time
+        // compares the users answer to the correct one and will choose whether top add a point or deduct time
         if (compareEl.textContent == questionIndex[questionListing].rightAnswer) {
             score++;
-            console.log(score)
+            console.log(score)            
             // variables that set array to a number
             var correctIndex = Math.floor(Math.random() * correctAnswers.length)
             // render text congratulating the correct answer
-            createDiv.innerHTML = correctAnswers[correctIndex] + questionIndex[questionListing].rightAnswer;
+            createDiv.textContent = correctAnswers[correctIndex] + questionIndex[questionListing].rightAnswer;   
         } else {
             var wrongIndex = Math.floor(Math.random() * wrongAnswers.length)
             // deduct 10 seconds for wrong answers
             countDown = countDown - deductTime;
             // renders with wrong answer text and gives the correct answer to the question
-            createDiv.innerHTML = wrongAnswers[wrongIndex] + questionIndex[questionListing].rightAnswer;
+            createDiv.textContent = wrongAnswers[wrongIndex] + questionIndex[questionListing].rightAnswer;
         }
-    }
     // determines which number question the user is on
     questionListing++;
-    
-    // when running out of time create a closing text with score and answer list
-    if (questionListing >= questionIndex.length) {
-        allCompleted();
-        // text to be created with data populated by user
-        createDiv.textContent = "You have reach the end of the quiz! " + "Your total score " + " " + score + "and " + "" + questionIndex.length + "Correct!!!";
-    } else {
-        render(questionListing);
+        
+        // when running out of time create a closing text with score and answer list
+        if (questionListing >= questionIndex.length) {
+            console.log(questionListing)
+            quizCompleted();
+            // text to be created with data populated by user
+            createDiv.textContent = "You have reach the end of the quiz! " + "Your total score is" + " " + score + " of " + "" + questionIndex.length + " Correct!!!";    
+        } else {
+            render(questionListing); //  renders list of questions
+        }
+        $("#scoreDiv").append(createDiv); // attaching the created div to scoreDiv 
     }
-    // creates div with text of completion and score
-    questionsList.appendChild(createDiv);
-}
+};
 
-function allCompleted() {
-    questionListing.innerHTML = "";
+function quizCompleted() {
+    questionsList.innerHTML = "";
     timer.innerHTML = "";
     
-    var divCard = $('#card')
-    
-    // create element variables
-    var createH1 = $('<h1>');
-    var paraCreate = $('<p>');
-    
-    createHead.attr('id', 'createH1');
-    paraCreate.attr('id', 'paraCreate');
-    
-    createHead.text('You have completed this quiz! ');
-    
-    divCard.append(createH1);
-    divCard.append(paraCreate);
-    
     if (countDown >= 0) {
-        var para2Create = $('<p>');
+        var userScore = $('#userScore');
         clearInterval(holdInterval);
-        paraCreate.innerHTML = "Your score is: " + countDown;
-        
-        divCard.append(para2Create);
+        userScore.text("Your final score is: " + countDown);
     }
     
-    // create element variables
-    var createLa = $('<label>')
-    var createIn = $('<input>');
-    var createBtn = $('<button>');
-    
-    // create id attributes
-    createLa.attr('id', 'label');
-    createIn.attr('id', 'input');
-    createBtn.attr('id', 'click');
-    
-    
-    createIn.text('enter initials here');
-    createLa.text ('Enter your initals to save your score: ');
-    createBtn.text('Click');    
-    
-    createIn.textContent = '';
-    
-    divCard.append(createLa)
-    divCard.append(createIn);
-    divCard.append(createBtn)
-    
-    
-    createBtn.on('click', function() {
-        var endScore = createIn.value;
+   // document.querySelector(".time")classlist.toggle('hidden');
+}
+var cardEl = $('#card');
 
-
-        
-        // function renderLastRegistered() 
-           var highScore = localStorage.getItem("scores")
-           
-
-        localStorage.setItem("highscore", scores)
-    })
+function sendMessage() {
+    timeEl.innerHTML = " Game Over! ";
+    var imgEl = $('<script>');
+    imgEl.attr("src", "assets/images/Game Over.PNG");
+    cardEl.appendTo(imgEl);  
 }
