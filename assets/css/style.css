@@ -91,6 +91,14 @@ footer {
   font-size: 22px;
   margin: auto;
   padding: 14px 34px;
+
+}
+#submit {
+  background-color: var(--background-color-2);  
+  color: var(--color);
+  font-size: 22px;
+  margin: auto;
+  padding: 14px 34px;
 }
 
 #text {
