@@ -7,7 +7,7 @@ This code quiz was created for a quick snapshot of how much JavaScript knowledge
 # Deployment
 
 
-https://bjavillo1059.github.io/password-generator/
+https://bjavillo1059.github.io/My-Code-Quiz/
 
 <img src="./assets/images/Code Quiz.PNG" alt=" img of code quiz"/>
 
@@ -46,6 +46,17 @@ or [bjavillo1059@gmail.com](bjavillo1059@gmail.com)
         - The choices the user makes for answers will be compared to the list of rightAnswers 
             - score a point for right answers
             - will deduct time for wrong answers (deducted time is 7 seconds)
+        - When answering all questions are complete
+            - window prompt for entering initials
+            - initials and score will be stored in localStorage
+        - Window prompt compliance
+            - initials will populate in the "View Score" block
+            - score will populate in the "View Score" block
+            - "Game Over" will display and an image of Game Over will pop up
+
+    *!citing of structure source and compare function added in comments on js page!*
+    
+    
         
 
 
