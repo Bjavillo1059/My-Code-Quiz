@@ -180,11 +180,6 @@ function quizCompleted() {
         initials = initials.toUpperCase()
     }
     
-    //  if (countDown >= 0) {
-        //     var userScore = $('#userScore');
-        //     clearInterval(holdInterval);
-        //     userScore.text("Your final score is: " + countDown);
-        //   }
         console.log(initials)
         var userFinal = {
             initials,
@@ -213,7 +208,7 @@ function quizCompleted() {
         imgEl.attr("src", "assets/images/Game Over.PNG");
         cardEl.append(imgEl);
 
-        
+}
         renderLastRegistered();
         
         function renderLastRegistered() {
@@ -225,4 +220,3 @@ function quizCompleted() {
             userInitials.value = userInput[userInput.length - 1].initials;
             userFinal.value = userInput[userInput.length - 1].score;
         }
-}
