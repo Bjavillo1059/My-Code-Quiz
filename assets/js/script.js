@@ -181,6 +181,8 @@ function quizCompleted() {
     }
     
         console.log(initials)
+
+        // var with if else statements to store data to localStorage
         var userFinal = {
             initials,
             score: countDown
@@ -199,7 +201,7 @@ function quizCompleted() {
         displayMessage()
     }
     
-    
+    // variable and function created to display game over when game is complete
     var cardEl = $('#card');
     
     function displayMessage() {
@@ -209,6 +211,7 @@ function quizCompleted() {
         cardEl.append(imgEl);
 
 }
+        // information rendered after the quiz is complete and will populate with the last known saved finalScore
         renderLastRegistered();
         
         function renderLastRegistered() {
